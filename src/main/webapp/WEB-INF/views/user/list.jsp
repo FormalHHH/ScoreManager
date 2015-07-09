@@ -1,5 +1,5 @@
 
-<h2>User List</h2>
+<h2>Grade List</h2>
 ${request}
 <div class="col-sm-12">
 	<c:if test="${not empty errorMessage}">
@@ -8,7 +8,7 @@ ${request}
 
 	<div class="well">
 		<a href="${pageContext.request.contextPath}/user/create?form"
-			class="btn btn-primary">New User</a><br> <br>
+			class="btn btn-primary">New Line</a><br> <br>
 		<form:form action="${pageContext.request.contextPath}/user/search"
 			method="get" modelAttribute="userSearchForm"
 			class="form-inline my-inline">
@@ -17,14 +17,18 @@ ${request}
 		</form:form>
 	</div>
 
+	<div class="">
+		<p>	Average: ${Average}</p>
+		<p>	SD: ${SD}</p>
+	</div>
+
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>id</th>
-				<th>name</th>
-				<th>email</th>
-				<th>birth</th>
-				<th>actions</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Grade</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,8 +36,7 @@ ${request}
 				<tr>
 					<td>${f:h(user.id)}</td>
 					<td>${f:h(user.name)}</td>
-					<td>${f:h(user.email)}</td>
-					<td>${f:h(user.birth)}</td>
+					<td>${f:h(user.grade)}</td>
 					<td><form:form
 							action="${pageContext.request.contextPath}/user"
 							class="form-inline">

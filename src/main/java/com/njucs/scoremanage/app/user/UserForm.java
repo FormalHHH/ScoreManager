@@ -3,6 +3,7 @@ package com.njucs.scoremanage.app.user;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -36,8 +37,7 @@ public class UserForm implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    @Null(groups = { UserCreateGroup.class })
-    @NotNull(groups = { UserUpdateGroup.class, UserDeleteGroup.class })
+    @NotNull(groups = { UserUpdateGroup.class, UserCreateGroup.class, UserDeleteGroup.class })
     @Min(0)
     private Integer id;
 
@@ -48,30 +48,9 @@ public class UserForm implements Serializable {
 
     @Null(groups = { UserDeleteGroup.class })
     @NotNull(groups = { UserUpdateGroup.class, UserCreateGroup.class })
-    @Size(min = 1, max = 50)
-    @Email
-    private String email;
-
-    @Null(groups = { UserDeleteGroup.class })
-    @NotNull(groups = { UserUpdateGroup.class, UserCreateGroup.class })
-    @Past
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birth;
-
-    @Null(groups = { UserDeleteGroup.class })
-    @NotNull(groups = { UserUpdateGroup.class, UserCreateGroup.class })
-    @Size(min = 6, max = 30)
-    private String password;
-
-    @Null(groups = { UserDeleteGroup.class })
-    @NotNull(groups = { UserUpdateGroup.class, UserCreateGroup.class })
-    @Size(min = 6, max = 30)
-    private String confirmPassword;
-
-    @Null(groups = { UserCreateGroup.class })
-    @NotNull(groups = { UserUpdateGroup.class, UserDeleteGroup.class })
     @Min(0)
-    private Integer version;
+    @Max(100)
+    private Integer grade;
 
     public Integer getId() {
         return id;
@@ -89,44 +68,12 @@ public class UserForm implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
+	public Integer getGrade() {
+		return grade;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getBirth() {
-        return birth;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
+	public void setGrade(Integer grade) {
+		this.grade = grade;
+	}
 
 }

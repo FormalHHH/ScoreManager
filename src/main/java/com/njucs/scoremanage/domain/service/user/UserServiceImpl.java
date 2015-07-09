@@ -1,6 +1,7 @@
 package com.njucs.scoremanage.domain.service.user;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Inject
     protected UserRepository userRepository;
-
+/*
     @Inject
     protected PasswordEncoder passwordEncoder;
 
@@ -38,7 +39,11 @@ public class UserServiceImpl implements UserService {
         user.setUpdatedAt(now);
         userRepository.save(user);
     }
-
+*/
+    @Override
+    public void save(User user) {
+    	userRepository.save(user);
+    }
     @Override
     @Transactional(readOnly = true)
     public User findOne(Integer id) {
@@ -48,6 +53,12 @@ public class UserServiceImpl implements UserService {
                     + "] is not found.");
         }
         return user;
+    }
+
+    @Override
+    public List<User> findAll() {
+    	List<User> list = userRepository.findAll();
+    	return list;
     }
 
     @Override

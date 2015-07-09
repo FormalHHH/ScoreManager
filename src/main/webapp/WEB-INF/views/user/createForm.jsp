@@ -2,42 +2,26 @@
 	<form:form action="${pageContext.request.contextPath}/user/create"
 		modelAttribute="userForm" class="form-horizontal">
 		<fieldset>
-			<legend>New User</legend>
+			<legend>New Grade</legend>
 			<div class="form-group">
-				<form:label path="name" class="col col-sm-2 control-label">User Name</form:label>
+				<form:label path="id" class="col col-sm-2 control-label">Student ID</form:label>
+				<div class="col col-sm-10">
+					<form:input path="id" class="form-control" />
+					<form:errors path="id" cssClass="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<form:label path="name" class="col col-sm-2 control-label">Student Name</form:label>
 				<div class="col col-sm-10">
 					<form:input path="name" class="form-control" />
 					<form:errors path="name" cssClass="text-danger" />
 				</div>
 			</div>
 			<div class="form-group">
-				<form:label path="email" class="col col-sm-2 control-label">E-mail</form:label>
+				<form:label path="grade" class="col col-sm-2 control-label">Grade</form:label>
 				<div class="col col-sm-10">
-					<form:input path="email" class="form-control" />
-					<form:errors path="email" cssClass="text-danger" />
-				</div>
-			</div>
-			<div class="form-group">
-				<form:label path="birth" class="col col-sm-2 control-label">User Birth</form:label>
-				<div class="col col-sm-10">
-					<form:input path="birth" class="form-control" />
-					<form:errors path="birth" cssClass="text-danger" />
-					(* yyyy-MM-dd)
-				</div>
-			</div>
-			<div class="form-group">
-				<form:label path="password" class="col col-sm-2 control-label">User Password</form:label>
-				<div class="col col-sm-10">
-					<form:password path="password" class="form-control" />
-					<form:errors path="password" cssClass="text-danger" />
-				</div>
-			</div>
-			<div class="form-group">
-				<form:label path="confirmPassword"
-					class="col col-sm-2 control-label">User Password (confirm)</form:label>
-				<div class="col col-sm-10">
-					<form:password path="confirmPassword" class="form-control" />
-					<form:errors path="confirmPassword" cssClass="text-danger" />
+					<form:input path="grade" class="form-control" />
+					<form:errors path="grade" cssClass="text-danger" />
 				</div>
 			</div>
 			<div class="form-group">

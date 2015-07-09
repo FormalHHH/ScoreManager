@@ -1,5 +1,7 @@
 package com.njucs.scoremanage.app.user;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -31,8 +33,33 @@ public class UserSearchController {
 
     @RequestMapping("list")
     public String list(@PageableDefaults Pageable pageable, Model model) {
+    	List<User> list = userService.findAll();
+        int sum = 0;
+        for (User u:list) {
+        	System.err.println("user.id="+u.getId()+";user.name="+u.getName()+";user.grade="+u.getGrade());
+        	sum += u.getGrade();
+        }
+        
+        Double average = (double)sum / (double)list.size();
+        
+        Double variance = 0.0;
+        
+        for (User u:list) {
+        	variance += ((double)u.getGrade() - average) * ((double)u.getGrade() - average);
+        }
+        
+        variance /= (double)list.size();
+        
+        Double sd =  Math.sqrt(variance);
+        
+        System.err.println("Average: " + average);
+        System.err.println("SD: " + sd);
+        model.addAttribute("Average", average);
+        model.addAttribute("SD",sd);
+        
         Page<User> page = userService.findAll(pageable);
         model.addAttribute("page", page);
+        
         return "user/list";
     }
 

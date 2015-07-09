@@ -7,10 +7,6 @@
   <mapping map-id="userExcludePassword"> 
     <class-a>com.njucs.scoremanage.domain.model.User</class-a>
     <class-b>com.njucs.scoremanage.app.user.UserForm</class-b>
-    <field-exclude>
-        <a>password</a>
-        <b>password</b>
-     </field-exclude>
   </mapping>  
 
 </mappings> 

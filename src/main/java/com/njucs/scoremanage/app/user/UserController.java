@@ -53,8 +53,8 @@ public class UserController {
     @RequestMapping(value = "create", params = "redo", method = RequestMethod.POST)
     public String createRedo(UserForm form) {
         // reset password
-        form.setPassword("");
-        form.setConfirmPassword("");
+        //form.setPassword("");
+        //form.setConfirmPassword("");
         return "user/createForm";
     }
 
@@ -67,7 +67,8 @@ public class UserController {
         }
 
         User user = beanMapper.map(form, User.class);
-        userService.save(user, form.getPassword());
+        //userService.save(user, form.getPassword());
+        userService.save(user);
 
         return "redirect:/user/create?complete";
     }
@@ -105,8 +106,8 @@ public class UserController {
             Model model) {
 
         // reset password
-        form.setPassword("");
-        form.setConfirmPassword("");
+        //form.setPassword("");
+        //form.setConfirmPassword("");
 
         return "user/updateForm";
     }
@@ -121,7 +122,8 @@ public class UserController {
 
         User user = userService.findOne(form.getId());
         beanMapper.map(form, user);
-        userService.save(user, form.getPassword());
+        //userService.save(user, form.getPassword());
+        userService.save(user);
 
         return "redirect:/user/update?complete";
     }
